@@ -1,0 +1,123 @@
+/* Dark Theme */
+body.dark-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+body.dark-theme .content {
+    background: rgba(26, 26, 46, 0.95);
+    color: #e0e0e0;
+}
+
+body.dark-theme .text-display {
+    background: #16213e;
+    border-color: #667eea;
+    color: #e0e0e0;
+}
+
+body.dark-theme .text-display.active {
+    background: #0f3460;
+}
+
+body.dark-theme .difficulty-selector {
+    background: #16213e;
+    color: #e0e0e0;
+}
+
+body.dark-theme .diff-btn {
+    background: #0f3460;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .diff-btn:hover {
+    border-color: #667eea;
+}
+
+body.dark-theme .game-input {
+    background: #0f3460;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .game-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+body.dark-theme .sidebar {
+    background: rgba(15, 52, 96, 0.5);
+}
+
+body.dark-theme .menu-btn {
+    color: #e0e0e0;
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+body.dark-theme .menu-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+body.dark-theme .shop-item {
+    background: #16213e;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .shop-item-name {
+    color: #e0e0e0;
+}
+
+body.dark-theme .shop-item-desc {
+    color: #b0b0b0;
+}
+
+body.dark-theme .achievement {
+    background: #16213e;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .achievement-name {
+    color: #e0e0e0;
+}
+
+body.dark-theme .achievement-desc {
+    color: #b0b0b0;
+}
+
+body.dark-theme .leaderboard-table th {
+    background: #16213e;
+    color: #e0e0e0;
+}
+
+body.dark-theme .leaderboard-table tr:hover {
+    background: #16213e;
+}
+
+body.dark-theme .modal-content {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea,
+body.dark-theme .form-group select {
+    background: #0f3460;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+/* Light Theme */
+body.light-theme .content {
+    background: white;
+}
+
+body.light-theme .text-display {
+    background: #f0f0f0;
+    border-color: #ddd;
+}
+
+body.light-theme .game-input {
+    border-color: #ddd;
+}
