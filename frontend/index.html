@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game - Test Your Speed</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <h1 class="logo">⌨️ TypingMaster</h1>
+            </div>
+            <div class="nav-right">
+                <div class="user-info" id="userInfo">
+                    <span class="coins">💰 <span id="coinCount">0</span></span>
+                    <span class="xp">⭐ <span id="xpCount">0</span></span>
+                    <span class="level">Level <span id="levelCount">1</span></span>
+                </div>
+                <button class="btn-nav" id="themeToggle">🌙</button>
+                <button class="btn-nav" id="settingsBtn">⚙️</button>
+                <button class="btn-nav" id="logoutBtn">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="menu">
+                    <button class="menu-btn active" data-page="game">🎮 Play Game</button>
+                    <button class="menu-btn" data-page="shop">🛍️ Shop</button>
+                    <button class="menu-btn" data-page="leaderboard">🏆 Leaderboard</button>
+                    <button class="menu-btn" data-page="stats">📊 Statistics</button>
+                    <button class="menu-btn" data-page="achievements">🎖️ Achievements</button>
+                    <button class="menu-btn" data-page="profile">👤 Profile</button>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <section class="content">
+                <!-- Game Page -->
+                <div class="page" id="gamePage" style="display: block;">
+                    <div class="game-container">
+                        <h2>Typing Challenge</h2>
+                        
+                        <!-- Difficulty Selection -->
+                        <div class="difficulty-selector">
+                            <h3>Select Difficulty:</h3>
+                            <div class="difficulty-buttons">
+                                <button class="diff-btn active" data-difficulty="easy">🟢 Easy</button>
+                                <button class="diff-btn" data-difficulty="normal">🟡 Normal</button>
+                                <button class="diff-btn" data-difficulty="hard">🔴 Hard</button>
+                                <button class="diff-btn" data-difficulty="extreme">⚫ Extreme</button>
+                            </div>
+                        </div>
+
+                        <!-- Game Stats -->
+                        <div class="game-stats">
+                            <div class="stat-box">
+                                <span class="stat-label">Time</span>
+                                <span class="stat-value" id="timer">60s</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">WPM</span>
+                                <span class="stat-value" id="wpm">0</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Accuracy</span>
+                                <span class="stat-value" id="accuracy">100%</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-label">Combo</span>
+                                <span class="stat-value" id="combo">0x</span>
+                            </div>
+                        </div>
+
+                        <!-- Text Display -->
+                        <div class="text-display" id="textDisplay">
+                            <p>Click start to begin typing...</p>
+                        </div>
+
+                        <!-- Input Area -->
+                        <div class="input-area">
+                            <input 
+                                type="text" 
+                                class="game-input" 
+                                id="gameInput" 
+                                placeholder="Start typing here..." 
+                                disabled>
+                        </div>
+
+                        <!-- Control Buttons -->
+                        <div class="game-controls">
+                            <button class="btn btn-primary" id="startBtn">Start Game</button>
+                            <button class="btn btn-secondary" id="resetBtn" disabled>Reset</button>
+                            <button class="btn btn-danger" id="quitBtn" disabled>Quit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shop Page -->
+                <div class="page" id="shopPage">
+                    <div class="shop-container">
+                        <h2>Shop</h2>
+                        <div class="balance-info">
+                            <p>💰 Your Balance: <strong id="shopBalance">0</strong> coins</p>
+                        </div>
+                        
+                        <!-- Shop Tabs -->
+                        <div class="shop-tabs">
+                            <button class="shop-tab active" data-category="powerups">⚡ Power-ups</button>
+                            <button class="shop-tab" data-category="skins">🎨 Skins</button>
+                            <button class="shop-tab" data-category="boosters">🚀 Boosters</button>
+                        </div>
+
+                        <!-- Shop Items -->
+                        <div class="shop-items" id="shopItems">
+                            <!-- Items populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Page -->
+                <div class="page" id="leaderboardPage">
+                    <div class="leaderboard-container">
+                        <h2>Leaderboard</h2>
+                        
+                        <!-- Leaderboard Tabs -->
+                        <div class="leaderboard-tabs">
+                            <button class="lb-tab active" data-type="global">🌍 Global</button>
+                            <button class="lb-tab" data-type="weekly">📅 Weekly</button>
+                            <button class="lb-tab" data-type="daily">📆 Daily</button>
+                        </div>
+
+                        <!-- Leaderboard Table -->
+                        <div class="leaderboard-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Player</th>
+                                        <th>WPM</th>
+                                        <th>Accuracy</th>
+                                        <th>Score</th>
+                                        <th>Games</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboardBody">
+                                    <!-- Populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Page -->
+                <div class="page" id="statsPage">
+                    <div class="stats-container">
+                        <h2>Your Statistics</h2>
+                        
+                        <!-- Stats Summary -->
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3>Total Games</h3>
+                                <p class="stat-number" id="totalGames">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Average WPM</h3>
+                                <p class="stat-number" id="avgWPM">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Best WPM</h3>
+                                <p class="stat-number" id="bestWPM">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Average Accuracy</h3>
+                                <p class="stat-number" id="avgAccuracy">0%</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Total Coins Earned</h3>
+                                <p class="stat-number" id="totalCoinsEarned">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Total XP</h3>
+                                <p class="stat-number" id="totalXP">0</p>
+                            </div>
+                        </div>
+
+                        <!-- Performance Chart -->
+                        <div class="chart-container">
+                            <h3>Performance Over Time</h3>
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Page -->
+                <div class="page" id="achievementsPage">
+                    <div class="achievements-container">
+                        <h2>Achievements</h2>
+                        <div class="achievements-grid" id="achievementsGrid">
+                            <!-- Achievements populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Page -->
+                <div class="page" id="profilePage">
+                    <div class="profile-container">
+                        <h2>Your Profile</h2>
+                        <div class="profile-info">
+                            <div class="profile-header">
+                                <div class="avatar" id="userAvatar">👤</div>
+                                <div class="user-details">
+                                    <h3 id="profileUsername">Username</h3>
+                                    <p id="profileLevel">Level 1</p>
+                                    <p id="profileJoinDate">Joined: --</p>
+                                </div>
+                            </div>
+
+                            <!-- Edit Profile -->
+                            <div class="edit-profile">
+                                <h4>Edit Profile</h4>
+                                <form id="profileForm">
+                                    <div class="form-group">
+                                        <label for="emailInput">Email:</label>
+                                        <input type="email" id="emailInput" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bioInput">Bio:</label>
+                                        <textarea id="bioInput" placeholder="Tell us about yourself..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Settings</h2>
+            <div class="settings-group">
+                <label>
+                    <input type="checkbox" id="soundToggle" checked>
+                    Enable Sound Effects
+                </label>
+                <label>
+                    <input type="checkbox" id="notificationsToggle" checked>
+                    Enable Notifications
+                </label>
+                <label>
+                    <input type="checkbox" id="statisticsToggle" checked>
+                    Track Statistics
+                </label>
+            </div>
+            <div class="settings-group">
+                <h3>Game Settings</h3>
+                <label>Word Set:
+                    <select id="wordSet">
+                        <option value="common">Common Words</option>
+                        <option value="medium">Medium Difficulty</option>
+                        <option value="hard">Hard Words</option>
+                        <option value="programming">Programming Terms</option>
+                    </select>
+                </label>
+            </div>
+            <button class="btn btn-primary" id="saveSettings">Save Settings</button>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content auth-content">
+            <h2 id="authTitle">Login</h2>
+            <form id="authForm">
+                <input type="email" id="authEmail" placeholder="Email" required>
+                <input type="password" id="authPassword" placeholder="Password" required>
+                <input type="text" id="authUsername" placeholder="Username" style="display:none;">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p id="authToggle">Don't have an account? <a href="#">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content">
+            <h2>Game Over!</h2>
+            <div class="game-over-stats">
+                <p>WPM: <strong id="finalWPM">0</strong></p>
+                <p>Accuracy: <strong id="finalAccuracy">0%</strong></p>
+                <p>Score: <strong id="finalScore">0</strong></p>
+                <p>Coins Earned: <strong id="finalCoins">0</strong> 💰</p>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="playAgainBtn">Play Again</button>
+                <button class="btn btn-secondary" id="backToMenuBtn">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
